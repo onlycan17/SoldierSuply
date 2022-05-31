@@ -1,6 +1,7 @@
 package 행정;
 
 import java.time.LocalDate;
+import java.util.StringJoiner;
 import 검사결과.합격불합격여부;
 
 public abstract class 재산대장 {
@@ -154,5 +155,19 @@ public abstract class 재산대장 {
     this.입고일자 = date;
     this.비고 = 비고;
     return this;
+  }
+
+
+  public String toString(int i) {
+    return new StringJoiner(", ")
+        .add("" + i)
+        .add("" + 품명)
+        .add("" + 입고량)
+        .add("" + 입고일자)
+        .add("" + 출고량)
+        .add("" + 출고일자)
+        .add("" + 합계)
+        .add("" + 비고)
+        .toString();
   }
 }

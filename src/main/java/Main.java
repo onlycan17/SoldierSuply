@@ -1,23 +1,21 @@
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import util.CsvService;
-import util.ExcelService;
-import 행정.재산대장;
+import service.CsvService;
+import service.ExcelService;
 import 행정.재산대장_소모품;
 import 행정.재산대장_장구류;
 import 행정.재산대장_피복류;
 
 public class Main {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args){
     Main main = new Main();
     ExcelService excelService = new ExcelService();
     CsvService csvService = new CsvService();
-    List<재산대장> 장구류들 = main.장구류_주입();
-    List<재산대장> 소모품들 = main.소모품_주입();
-    List<재산대장> 피복류들 = main.피복류_주입();
+    List<재산대장_장구류> 장구류들 = main.장구류_주입();
+    List<재산대장_소모품> 소모품들 = main.소모품_주입();
+    List<재산대장_피복류> 피복류들 = main.피복류_주입();
 
     csvService.downloadCSV(장구류들,"장구류재산대장");
     csvService.downloadCSV(소모품들,"소모품재산대장");
@@ -28,11 +26,11 @@ public class Main {
     excelService.downloadExcel(피복류들, "피복류재산대장");
   }
 
-  public List<재산대장> 장구류_주입() {
-    List<재산대장> 수통List = new ArrayList<>();
-    List<재산대장> 헬멧List = new ArrayList<>();
-    List<재산대장> 방탄조끼List = new ArrayList<>();
-    List<재산대장> 재산대장List = new ArrayList<>();
+  public List<재산대장_장구류> 장구류_주입() {
+    List<재산대장_장구류> 수통List = new ArrayList<>();
+    List<재산대장_장구류> 헬멧List = new ArrayList<>();
+    List<재산대장_장구류> 방탄조끼List = new ArrayList<>();
+    List<재산대장_장구류> 재산대장List = new ArrayList<>();
 
     수통List.add(new 재산대장_장구류().수령("수통", 2050, 2050, LocalDate.of(2022, 01, 20), "초기 수령"));
     헬멧List.add(new 재산대장_장구류().수령("헬멧", 2000, 2000, LocalDate.of(2022, 01, 20), "초기 수령"));
@@ -82,8 +80,8 @@ public class Main {
     return 재산대장List;
   }
 
-  public List<재산대장> 소모품_주입() {
-    List<재산대장> 소모품들 = new ArrayList<>();
+  public List<재산대장_소모품> 소모품_주입() {
+    List<재산대장_소모품> 소모품들 = new ArrayList<>();
 
     for (int i = 0; i < 2000; i++) {
       double year = Math.random();
@@ -106,8 +104,8 @@ public class Main {
     return 소모품들;
   }
 
-  public List<재산대장> 피복류_주입() {
-    List<재산대장> 피복류들 = new ArrayList<>();
+  public List<재산대장_피복류> 피복류_주입() {
+    List<재산대장_피복류> 피복류들 = new ArrayList<>();
     피복류들.add(new 재산대장_피복류().전입("생활복", 300, 300, LocalDate.of(1999, 01, 01), "초기전입"));
     피복류들.add(new 재산대장_피복류().전입("슬리퍼", 300, 300, LocalDate.of(1999, 01, 01), "초기전입"));
     피복류들.add(new 재산대장_피복류().전입("전투복", 300, 300, LocalDate.of(1999, 01, 01), "초기전입"));
