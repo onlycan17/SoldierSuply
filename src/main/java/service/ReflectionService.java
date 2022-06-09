@@ -13,6 +13,7 @@ public class ReflectionService {
     Field filed출고일자 = data.getDeclaredField("출고일자");
     Field filed합계 = data.getDeclaredField("합계");
     Field filed비고 = data.getDeclaredField("비고");
+
     Field[] fields = new Field[7];
     fields[0] = filed품명;
     fields[1] = filed입고량;
