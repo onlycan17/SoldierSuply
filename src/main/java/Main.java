@@ -17,13 +17,13 @@ public class Main {
     List<재산대장_소모품> 소모품들 = main.소모품_주입();
     List<재산대장_피복류> 피복류들 = main.피복류_주입();
 
-    csvService.downloadCSV(장구류들,"장구류재산대장");
-    csvService.downloadCSV(소모품들,"소모품재산대장");
-    csvService.downloadCSV(피복류들,"피복류재산대장");
+    csvService.download(장구류들,"장구류재산대장");
+    csvService.download(소모품들,"소모품재산대장");
+    csvService.download(피복류들,"피복류재산대장");
 
-    excelService.downloadExcel(장구류들, "장구류재산대장");
-    excelService.downloadExcel(소모품들, "소모품재산대장");
-    excelService.downloadExcel(피복류들, "피복류재산대장");
+    excelService.download(장구류들, "장구류재산대장");
+    excelService.download(소모품들, "소모품재산대장");
+    excelService.download(피복류들, "피복류재산대장");
   }
 
   public List<재산대장_장구류> 장구류_주입() {

@@ -5,16 +5,24 @@ import java.util.StringJoiner;
 import 검사결과.합격불합격여부;
 
 public class 재산대장_피복류 extends 재산대장{
+  @ModelOrder(order = 3)
   private LocalDate 입고일자;
+  @ModelOrder(order = 2)
   private int 입고량;
+
+  @ModelOrder(order = 1)
   private String 품명;
-  private 합격불합격여부 검사결과;
+
+  @ModelOrder(order = 5)
   private LocalDate 출고일자;
+
+  @ModelOrder(order = 4)
   private int 출고량;
 
-  private int 합계;
+  @ModelOrder(order = 7)
   private String 비고;
-
+  @ModelOrder(order = 6)
+  private int 합계;
   public int get합계() {
     return 합계;
   }

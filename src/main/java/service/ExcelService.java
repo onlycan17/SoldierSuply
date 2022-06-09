@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelService implements IService{
@@ -22,7 +23,15 @@ public class ExcelService implements IService{
     XSSFSheet sheet;
     XSSFRow headerRow;
     XSSFRow row;
-    List<String> headers = List.of("번호","품명","입고량","입고일자","출고량","출고일자","합계","비고");
+
+    //List<String> headers = List.of("번호","품명","입고량","입고일자","출고량","출고일자","합계","비고");
+
+    Field[] fieldsTitle = reflectionService.getSortReflectionTitle(dataList.get(0));
+    List<String> title = new ArrayList<>();
+    title.add("번호");
+    for (Field field : fieldsTitle) {
+      title.add(field.getName());
+    }
 
     Path currentPath = Paths.get(System.getProperty("user.dir"));
     Path filePath = Paths.get(currentPath.toString(), fileName+".xlsx");
@@ -31,12 +40,12 @@ public class ExcelService implements IService{
       sheet = xworkbook.createSheet("재산대장");
       int rowNo = 0;
       headerRow = sheet.createRow(rowNo++);
-      for (int i = 0; i < headers.size(); i++) {
-        headerRow.createCell(i).setCellValue(headers.get(i));
+      for (int i = 0; i < title.size(); i++) {
+        headerRow.createCell(i).setCellValue(title.get(i));
       }
 
       for (int i = 0; i < dataList.size(); i++) {
-        Field[] fields = reflectionService.extracted(dataList,i);
+        Field[] fields = reflectionService.getSortReflectionItem(dataList,i);
 
         int idxCell = 0;
         row = sheet.createRow(rowNo++);
