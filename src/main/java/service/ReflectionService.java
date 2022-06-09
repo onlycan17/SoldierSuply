@@ -35,7 +35,7 @@ public class ReflectionService {
 
         for (Field s : dataField) {
             s.setAccessible(true);
-            System.out.println(s);
+            //System.out.println(s);
         }
 
         var sorted = Arrays.stream(dataField).sorted(
